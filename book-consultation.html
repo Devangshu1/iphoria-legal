@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Consultation | Iphoria Legal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      background: #05070d;
+      color: #eaeaea;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+    }
+
+    .navbar { padding: 18px 30px; display: flex; align-items: center; background: linear-gradient(90deg,#e5e6eb,#313850); }
+    .navbar img { height: 60px; }
+
+    .consult-container {
+      max-width: 700px;
+      margin: 80px auto;
+      padding: 30px 25px;
+      background: #0f162d;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    h2 {
+      text-align: center;
+      color: #d4af37;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    .consult-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .consult-form input,
+    .consult-form textarea {
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #0c1222;
+      color: #fff;
+      font-size: 16px;
+    }
+
+    .consult-form button {
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg,#d4af37,#b8962e);
+      color: #0b1020;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .consult-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(212,175,55,0.6);
+    }
+
+    /* WhatsApp Button */
+    .whatsapp {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      background: #25d366;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 22px;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    footer {
+      background: linear-gradient(180deg, #050814, #070b1a);
+      color: #eaeaea;
+      padding: 50px 25px;
+      font-size: 15px;
+      text-align: center;
+      border-top: 1px solid rgba(212, 175, 55, 0.25);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .consult-container { margin: 60px 15px; padding: 25px; }
+      h2 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="nav-left">
+    <img src="assets/logo.png" alt="Iphoria Legal">
+  </div>
+</header>
+
+<div class="consult-container">
+  <h2>Book Your Consultation</h2>
+  <form class="consult-form" action="#" method="POST" onsubmit="return submitForm()">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <textarea name="message" placeholder="Brief about your legal matter"></textarea>
+    <button type="submit">Submit Request</button>
+  </form>
+</div>
+
+<a href="https://wa.me/917011328689" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<footer>
+  © 2026 Iphoria Legal. All Rights Reserved.
+</footer>
+
+<script>
+function submitForm() {
+  alert("Consultation request submitted successfully.");
+  return true;
+}
+</script>
+
+</body>
+</html>
