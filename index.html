@@ -1,125 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Iphoria Legal | Corporate Elite Law Firm</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Fix hamburger close button visibility */
+    .close-btn {
+      font-size: 28px;
+      cursor: pointer;
+      color: #333;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+
+    /* Optional: Ensure mobile drawer is above other elements */
+    .mobile-drawer {
+      z-index: 1000;
+    }
+
+    /* Make buttons point to booking page */
+    a.cta, .hero-btn, .btn, .drawer-cta {
+      text-decoration: none;
+    }
+  </style>
 </head>
+<!-- Floating Buttons -->
+<a href="https://wa.me/919319017370" target="_blank" class="floating-btn whatsapp-btn">
+  <img src="assets/whatsapp.jpg.png" alt="WhatsApp">
+</a>
+
+<a href="#" class="floating-btn chatbot-btn" onclick="toggleChatBot()">
+  <img src="assets/chatbot..jpg.png" alt="Chatbot">
+</a>
+
+<!-- Chatbot Popup -->
+<div id="chatbot-popup" class="chatbot-popup">
+  <div class="chatbot-header">
+    <span>Quick Chat</span>
+    <span class="close-chat" onclick="toggleChatBot()">&times;</span>
+  </div>
+  <div class="chatbot-body">
+    <p class="chatbot-question" onclick="showAnswer(0)">1. What services do you offer?</p>
+    <p class="chatbot-question" onclick="showAnswer(1)">2. How can I book a consultation?</p>
+    <p class="chatbot-question" onclick="showAnswer(2)">3. What are your office hours?</p>
+    <p class="chatbot-question" onclick="showAnswer(3)">4. Do you handle corporate cases?</p>
+    <p class="chatbot-question" onclick="showAnswer(4)">5. How do I contact a lawyer directly?</p>
+    <div id="chatbot-answer" class="chatbot-answer"></div>
+  </div>
+</div>
+
 <body>
 
-<!-- HEADER -->
-<header class="navbar">
-  <div class="nav-left">
-    <img src="assets/logo.png" class="logo" alt="Iphoria Legal" />
-  </div>
+<!-- ================= HEADER ================= -->
+<header class="elite-header">
+  <div class="elite-header-inner">
+    <img src="assets/logo.png" class="logo">
 
-  <div class="nav-center">
-    <!-- Desktop nav links -->
-    <nav class="desktop-nav">
-      <a href="#about">About</a>
-      <a href="#practice">Practice</a>
-      <a href="#contact">Contact</a>
+    <nav class="nav desktop-nav">
+      <a href="book-consultation.html">About</a>
+      <a href="book-consultation.html">Services</a>
+      <a href="book-consultation.html">Why Us</a>
+      <a href="book-consultation.html" class="cta">Book Consultation ↗</a>
     </nav>
 
-    <!-- CTA button -->
-    <a href="book-consultation.html">
-      <button class="cta-btn">Book Consultation</button>
-    </a>
+    <!-- Hamburger -->
+    <div class="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer">
+  <div class="drawer-header">
+    <img src="assets/logo.png" class="drawer-logo">
+    <div class="close-btn">&times;</div>
   </div>
 
-  <!-- Mobile hamburger button -->
-  <div class="mobile-menu-btn">&#9776;</div>
-
-  <!-- Mobile nav links -->
-  <nav class="mobile-nav">
-    <a href="#about">About</a>
-    <a href="#practice">Practice</a>
-    <a href="#contact">Contact</a>
+  <nav class="drawer-nav">
+    <a href="book-consultation.html">Home</a>
+    <a href="book-consultation.html">About Us</a>
+    <a href="book-consultation.html">Services</a>
+    <a href="book-consultation.html">Why Choose Us</a>
+    <a href="book-consultation.html">Our Partners</a>
   </nav>
-</header>
-<!-- HERO -->
+
+  <!-- CONTACT INFO -->
+  <div class="drawer-contact">
+    <h4>Contact Us</h4>
+    <p><i class="fa-solid fa-location-dot"></i> Janakpuri, New Delhi – 110058</p>
+    <p><i class="fa-solid fa-phone"></i> +91 93190 17370</p>
+    <p><i class="fa-solid fa-envelope"></i> info@iphorialegal.com</p>
+  </div>
+
+  <!-- SOCIAL ICONS -->
+  <div class="drawer-socials">
+    <a href="tel:+919319017370"><i class="fa-solid fa-phone"></i></a>
+    <a href="https://wa.me/919319017370" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    <a href="mailto:info@iphorialegal.com"><i class="fa-solid fa-envelope"></i></a>
+    <a href="#" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+  </div>
+
+  <a href="book-consultation.html" class="drawer-cta">
+    Get Started <span>↗</span>
+  </a>
+</div>
+
+<!-- ================= HERO ================= -->
 <section class="hero">
   <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>
-      Elite Legal Solutions<br>
-      <span>For Corporates & Visionaries</span>
-    </h1>
-    <p class="hero-text">
-      At Iphoria Legal, we provide strategic, ethical, and result-driven legal solutions tailored for individuals, startups, and enterprises. Our approach combines deep legal expertise with practical business understanding to protect your rights, reputation, and future.
+
+  <div class="hero-content reveal">
+    <h1>Elite Legal Solutions<br><span>For Corporates & Visionaries</span></h1>
+    <p>Strategic, ethical and result-driven legal advisory for enterprises, founders and high-value clients.</p>
+    <a href="book-consultation.html" class="hero-btn">Get in Touch ↗</a>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="about-content">
+      <span class="about-pill">About Us</span>
+      <h2 class="about-title">
+        Protecting Innovation.<br>
+        <span>Empowering Brands</span>
+      </h2>
+      <p class="about-text">
+        Iphoria Legal is a modern boutique law firm delivering precision-driven
+        legal solutions aligned with corporate strategy, confidentiality, and scale.
+      </p>
+      <br>
+      <p class="about-text">
+        The firm’s approach is rooted in confidentiality, efficiency, and scalability, making it a trusted partner for corporations, startups, and high-stakes transactions alike. By combining deep legal expertise with a keen understanding of market dynamics, 
+        Iphoria Legal offers practical, actionable advice rather than purely theoretical guidance.
+      </p>
+    </div>
+
+    <div class="about-image-wrap">
+      <img src="assets/about-main.jpg" alt="Law Image">
+    </div>
+  </div>
+</section>
+
+<!-- ================= OUR SERVICES ================= -->
+<section id="core-services" class="section light reveal">
+  <div class="section-heading-left">
+    <span class="about-pill">Our Core Services</span>
+    <h2 class="about-title">
+      Delivering Legal Expertise<br>
+      <span>Across Key Areas</span>
+    </h2>
+    <p class="core-services-intro">
+      Trusted legal solutions for corporates, startups, and professionals.
     </p>
-    <button class="hero-btn" onclick="openConsult()">Get Trusted Legal Assistance</button>
+  </div>
+
+  <div class="core-services-list">
+    <div class="core-service">
+      <img src="assets/core1.jpg" alt="Corporate Legal Support">
+      <h3>Corporate Legal Support</h3>
+      <p>Our team provides comprehensive corporate legal solutions, including governance advisory, compliance management, business structuring, and corporate documentation.</p>
+    </div>
+
+    <div class="core-service">
+      <img src="assets/core2.jpg" alt="Commercial Litigation">
+      <h3>Commercial Litigation</h3>
+      <p>We represent businesses in commercial disputes, arbitration, and court proceedings, protecting your interests at every stage.</p>
+    </div>
+
+    <div class="core-service">
+      <img src="assets/core3.jpg" alt="Contract Drafting & Review">
+      <h3>Contract Drafting & Review</h3>
+      <p>We craft and review contracts, agreements, and commercial arrangements with precision, mitigating potential liabilities and ensuring clarity in obligations.</p>
+    </div>
+
+    <div class="core-service">
+      <img src="assets/core4.jpg" alt="Regulatory Compliance">
+      <h3>Regulatory Compliance</h3>
+      <p>Our experts guide businesses through complex regulatory frameworks, helping secure necessary licenses, maintain statutory compliance, and implement internal controls. </p>
+    </div>
+
+    <div class="core-service">
+      <img src="assets/core5.jpg" alt="Employment & Labour Law">
+      <h3>Employment & Labour Law</h3>
+      <p>We provide advisory services on workplace policies, employment agreements, dispute resolution, and labor law compliance.</p>
+    </div>
   </div>
 </section>
 
-<!-- TRUST / AUTHORITY SECTION -->
-<section class="section trust-elite">
-  <h2 class="section-title">Our Legal Edge</h2>
-  <div class="trust-cards">
-    <div class="trust-card">
-      <img src="assets/trust-coporate.jpg" alt="Corporate Authority">
-      <div class="trust-content">
-        <h3>Corporate Authority</h3>
-        <p>We advise founders, enterprises, and decision-makers on high-stakes legal matters involving corporate governance, compliance, transactions, and risk management. Our strategies are decisive, confidential, and business-oriented.</p>
-      </div>
+<!-- ================= WHY US ================= -->
+<section id="why-us" class="section reveal">
+  <div class="section-heading-left">
+    <span class="about-pill">Why Choose Iphoria Legal</span>
+    <h2 class="about-title">
+      The Advantage of Partnering<br>
+      <span>With Our Firm</span>
+    </h2>
+  </div>
+
+  <div class="why-cards">
+    <div class="why-card">
+      <img src="assets/why1.jpg" alt="Specialised Expertise">
+      <p><strong>Specialised Legal Insight</strong><br> We combine deep expertise across corporate, commercial, and regulatory law, delivering strategies tailored to each client’s unique business environment.</p>
     </div>
-    <div class="trust-card">
-      <img src="assets/trust-intelligence.jpg" alt="Legal Intelligence">
-      <div class="trust-content">
-        <h3>Legal Intelligence</h3>
-        <p>Our practice blends traditional legal wisdom with modern tools, research, and foresight. We approach every matter with analytical depth, precision drafting, and future-ready legal thinking.</p>
-      </div>
+
+    <div class="why-card">
+      <img src="assets/why2.jpg" alt="Client First Approach">
+      <p><strong>Client-First Approach</strong><br>Every solution is designed around your priorities and business goals.</p>
     </div>
-    <div class="trust-card">
-      <img src="assets/trust-global.jpg" alt="Global Standards">
-      <div class="trust-content">
-        <h3>Global Standards</h3>
-        <p>While rooted in Indian law, our mindset is global. We deliver legal services aligned with international corporate standards, ensuring credibility, scalability, and cross-border readiness.</p>
-      </div>
+
+    <div class="why-card">
+      <img src="assets/why3.jpg" alt="Proactive Protection">
+      <p><strong>Proactive Protection</strong><br> Anticipating potential risks is key to our methodology. </p>
+    </div>
+
+    <div class="why-card">
+      <img src="assets/why4.jpg" alt="Transparent & Accessible">
+      <p><strong>Transparent & Accessible</strong><br>We communicate clearly, provide realistic expectations, and ensure accessibility at every step. Clients benefit from an open partnership where advice is straightforward, fees are transparent, and solutions are tailored to their evolving needs.</p>
     </div>
   </div>
 </section>
 
+<!-- ================= WE DEAL WITH ================= -->
+<section class="industries">
+  <h2>We Deal With</h2>
 
+  <p class="industries-list">
+    Corporates | Startups | Business Owners | MSMEs | Technology Companies |
+    Manufacturing Units | Media & Creative Businesses |
+    E-commerce Brands | Professionals & Consultants
+  </p>
 
+  <p class="industries-sub">
+    Practical legal support for businesses and individuals,
+    focused on compliance, transactions and dispute resolution.
+  </p>
 
-<!-- WHY US -->
-<section class="section why-us">
-  <h2>Why Iphoria Legal</h2>
-  <div class="why-grid">
-    <div>✔ Elite Corporate Focus</div>
-    <div>✔ Confidential & Strategic</div>
-    <div>✔ Tech-Driven Practice</div>
-    <div>✔ Fast & Precise Execution</div>
-  </div>
+  <a href="book-consultation.html" class="btn">
+    Get in touch
+    <span>↗</span>
+  </a>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer" id="contact">
-  <div class="footer-container">
-    <div class="footer-info">
-      <h3>Iphoria Legal</h3>
-      <p><strong>Address:</strong><br>403, Jaina Tower-1,<br>District Center, Janakpuri,<br>New Delhi – 110058</p>
-      <p><strong>Phone:</strong><br><a href="tel:+919319017370">+91 93190 17370</a></p>
-      <p><strong>Email:</strong><br><a href="mailto:info@iphorialegal.com">info@iphorialegal.com</a></p>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="elite-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3><img src="assets/logo.png" alt="Iphoria Legal Logo"></h3>
+      <p>Janakpuri, New Delhi – 110058</p>
+      <p>📞 +91 93190 17370</p>
+      <p>✉️ info@iphorialegal.com</p>
+
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:info@iphorialegal.com"><i class="fa-solid fa-envelope"></i></a>
+      </div>
     </div>
-    <div class="footer-map">
-      <iframe src="https://www.google.com/maps?q=IPhoria+Legal+Janakpuri&output=embed" width="100%" height="260" style="border:0; border-radius:12px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    <div class="footer-newsletter">
+      <h4>Newsletter</h4>
+      <p>Subscribe & receive our latest legal insights</p>
+
+      <form class="newsletter-form">
+        <input type="email" placeholder="Email Address">
+        <button type="submit">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 Iphoria Legal. All Rights Reserved.</div>
+
+  <div class="footer-bottom">
+    <span>© 2026 Iphoria Legal. All Rights Reserved</span>
+    <div class="footer-links">
+      <a href="book-consultation.html">Terms & Conditions</a>
+      <a href="book-consultation.html">Privacy Policy</a>
+    </div>
+  </div>
 </footer>
 
-<!-- WhatsApp -->
-<a href="https://wa.me/919319017370" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
+<!-- ================= JS ================= -->
+<script src="script.js"></script>
 <script>
-function openConsult() {
-  window.location.href = "book-consultation.html";
-}
+  // Hamburger toggle
+  const menuBtn = document.querySelector('.menu-btn');
+  const mobileDrawer = document.querySelector('.mobile-drawer');
+  const closeBtn = document.querySelector('.close-btn');
+
+  menuBtn.addEventListener('click', () => {
+    mobileDrawer.style.display = 'block';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    mobileDrawer.style.display = 'none';
+  });
 </script>
 
 </body>
