@@ -4,68 +4,134 @@
   <meta charset="UTF-8">
   <title>Book Consultation | Iphoria Legal</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="common.css">
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Main CSS from your index.html -->
+  <link rel="stylesheet" href="style.css">
+
+
   <style>
+    /* ===== PAGE-SPECIFIC STYLES ===== */
     body {
-      background: #05070d;
+      background: #ffffff;
       color: #eaeaea;
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
     }
 
-    .navbar { padding: 18px 30px; display: flex; align-items: center; background: linear-gradient(90deg,#e5e6eb,#313850); }
-    .navbar img { height: 60px; }
+    a { text-decoration: none; }
 
+    /* ===== HERO SECTION ===== */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 60vh;
+      background: url("assets/hero.jpg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 10%;
+      overflow: hidden;
+      transform-origin: center;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05),
+        rgba(0, 0, 0, 0.1)
+      );
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero-content h1 {
+      font-size: 48px;
+      line-height: 1.2;
+      margin: 0;
+      color: #c5a420;
+    }
+
+    .hero-content p {
+      margin-top: 15px;
+      font-size: 18px;
+      color: #f0f0f0;
+    }
+
+    /* ===== CONSULTATION FORM ===== */
     .consult-container {
       max-width: 700px;
-      margin: 80px auto;
-      padding: 30px 25px;
-      background: #0f162d;
-      border-radius: 16px;
+      margin: -50px auto 80px auto; /* overlap hero slightly */
+      padding: 35px 30px;
+      background: #ffffff;
+      border-radius: 12px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      position: relative;
+      z-index: 5;
+      animation: fadeInUp 1s ease forwards;
     }
 
-    h2 {
-      text-align: center;
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .consult-container h2 {
+      font-size: 32px;
       color: #d4af37;
       margin-bottom: 25px;
-      font-size: 28px;
+      text-align: left;
     }
 
     .consult-form {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 18px;
     }
 
     .consult-form input,
     .consult-form textarea {
-      padding: 12px;
-      border-radius: 8px;
+      padding: 14px;
+      border-radius: 6px;
       border: 1px solid #333;
-      background: #0c1222;
-      color: #fff;
+      background: #f9fafc;
+      color: #000;
       font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .consult-form input:focus,
+    .consult-form textarea:focus {
+      border-color: #d4af37;
+      box-shadow: 0 0 10px rgba(212,175,55,0.5);
+      outline: none;
     }
 
     .consult-form button {
-      padding: 14px;
+      padding: 16px;
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       background: linear-gradient(135deg,#d4af37,#b8962e);
       color: #0b1020;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
+      font-size: 16px;
       transition: all 0.3s ease;
     }
 
     .consult-form button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 0 20px rgba(212,175,55,0.6);
+      box-shadow: 0 0 25px rgba(212,175,55,0.6);
     }
 
-    /* WhatsApp Button */
+    /* ===== WHATSAPP BUTTON ===== */
     .whatsapp {
       position: fixed;
       bottom: 22px;
@@ -73,37 +139,61 @@
       background: #25d366;
       padding: 15px;
       border-radius: 50%;
-      font-size: 22px;
+      font-size: 24px;
       text-decoration: none;
       box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      z-index: 10;
     }
 
-    footer {
-      background: linear-gradient(180deg, #050814, #070b1a);
-      color: #eaeaea;
-      padding: 50px 25px;
-      font-size: 15px;
-      text-align: center;
-      border-top: 1px solid rgba(212, 175, 55, 0.25);
-    }
+    .whatsapp:hover { transform: scale(1.1); }
 
-    /* RESPONSIVE */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .consult-container { margin: 60px 15px; padding: 25px; }
-      h2 { font-size: 24px; }
+      .hero-content h1 { font-size: 36px; }
+      .hero-content p { font-size: 16px; }
+      .consult-container { margin: -30px 15px 60px 15px; padding: 25px; }
+      .consult-container h2 { font-size: 28px; }
     }
   </style>
 </head>
+<!-- Floating Buttons -->
+<a href="https://wa.me/919319017370" target="_blank" class="floating-btn whatsapp-btn">
+  <img src="assets/whatsapp.jpg.png" alt="WhatsApp">
+</a>
 <body>
 
-<header class="navbar">
-  <div class="nav-left">
-    <img src="assets/logo.png" alt="Iphoria Legal">
+<!-- HEADER: same as index.html -->
+<header class="elite-header">
+  <div class="elite-header-inner">
+    <a href="index.html"><img src="assets/logo.png" alt="Iphoria Legal" class="logo"></a>
+    <nav class="desktop-nav nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="consultation.html" class="cta">Book Consultation</a>
+    </nav>
+    <div class="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 </header>
 
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Book a Consultation</h1>
+    <p>Connect with our expert legal advisors for strategic and trusted solutions.</p>
+  </div>
+</section>
+
+<!-- CONSULTATION FORM -->
 <div class="consult-container">
-  <h2>Book Your Consultation</h2>
+  <h2>Your Consultation Request</h2>
   <form class="consult-form" action="#" method="POST" onsubmit="return submitForm()">
     <input type="text" name="name" placeholder="Full Name" required>
     <input type="email" name="email" placeholder="Email Address" required>
@@ -113,17 +203,65 @@
   </form>
 </div>
 
-<a href="https://wa.me/917011328689" class="whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-<footer>
-  © 2026 Iphoria Legal. All Rights Reserved.
+
+<!-- FOOTER: same as index.html -->
+<!-- ================= Footer ================= -->
+<footer class="elite-footer">
+  <div class="footer-inner">
+
+    <!-- LEFT -->
+    <div class="footer-brand">
+      <h3><img src="assets/logo.png"</h3>
+      <p>Janakpuri, New Delhi – 110058</p>
+      <p>📞 +91 93190 17370</p>
+      <p>✉️ info@iphorialegal.com</p>
+
+      <div class="footer-socials">
+        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="mailto:info@iphorialegal.com"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="footer-newsletter">
+      <h4>Newsletter</h4>
+      <p>Subscribe & receive our latest legal insights</p>
+
+      <form class="newsletter-form">
+        <input type="email" placeholder="Email Address">
+        <button type="submit">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="footer-bottom">
+    <span>© 2026 Iphoria Legal. All Rights Reserved</span>
+    <div class="footer-links">
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
 </footer>
 
 <script>
 function submitForm() {
-  alert("Consultation request submitted successfully.");
+  alert("Your consultation request has been submitted successfully.");
   return true;
 }
+
+// Optional: Hero zoom on scroll
+const hero = document.querySelector('.hero');
+window.addEventListener('scroll', () => {
+  let scrollY = window.scrollY;
+  let scale = 1 + scrollY / 5000;
+  hero.style.transform = `scale(${scale})`;
+});
 </script>
 
 </body>
